@@ -1,8 +1,11 @@
 import repoUser from "../Repositories/UserRepository.js";
+import argon2 from "argon2";
+import jwt from "jsonwebtoken";
 
 class userServices {
     async createUserService(data){
         try{
+            data.password = await argon2.hash(data.password);
             return await repoUser.createUser(data)
         }catch(err){
             console.error("Error in services");
@@ -57,7 +60,12 @@ class userServices {
 
     async loginUserService(data){
         try{
-            return await repoUser.loginUser(data)
+            const user = await repoUser.loginUser(data)
+            if(user.status === false){
+                return user;
+            }
+            const token = jwt.sign({userId: user.userId, role: user.role}, process.env.key, {expiresIn: "1h"});
+            return {status: true, token}
         }catch(err){
             console.error("Error in services:");
             return {status: false, message: err.message}

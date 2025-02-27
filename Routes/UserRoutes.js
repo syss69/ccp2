@@ -1,18 +1,21 @@
 import express from "express";
 import userController from "../Controllers/UserController.js";
+import {checkToken} from "../Middlewares/authMiddleware.js";
+import {checkIsUserToken} from "../Middlewares/isUserMiddleware.js"
+
 const router = express.Router();
 
 router.post("/create", userController.createUser);
 
-router.get("/name", userController.getUserByName);
+router.get("/name", checkToken, userController.getUserByName);
 
-router.get("/id/:id", userController.getUserById);
+router.get("/id/:id", checkToken, userController.getUserById);
 
-router.get("/role", userController.getUsersByRole);
+router.get("/role", checkToken, userController.getUsersByRole);
 
-router.delete("/delete/:id", userController.deleteUser);
+router.delete("/delete/:id", checkToken, checkIsUserToken, userController.deleteUser);
 
-router.patch("/update/:id", userController.updateUser);
+router.patch("/update/:id", checkToken, checkIsUserToken, userController.updateUser);
 
 router.post("/login", userController.loginUser);
 

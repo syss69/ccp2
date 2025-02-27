@@ -15,5 +15,12 @@ const UserSchema = new Schema({
     password: String
 });
 
+UserSchema.set("toJSON", {  //cette function permette de ne pas retourner le mot de pass si on appelle "get" -- aussi possible d'utiliser select("-password") 
+    transform: function (doc, ret) {
+        delete ret.password;
+        return ret;
+    }
+});
+
 const userModel = mongoose.model("User", UserSchema)
 export default userModel;

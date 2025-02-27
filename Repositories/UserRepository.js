@@ -1,4 +1,5 @@
 import userModel from "../Models/UserSchema.js";
+import argon2 from "argon2"
 
 class repoUser {
     async getUsersByRole(data){
@@ -38,7 +39,7 @@ class repoUser {
                 return {status: false, message: "User not found"}
             }
         }catch(err){
-            console.error(err.message)
+            console.error( err.message)
             return  { status: false, message: "Internal server error" };
         }
     }
@@ -55,7 +56,7 @@ class repoUser {
             return { status: true, message: "User saved", userId: user._id }
         }catch(err){
             if(err.message.slice(0, 26) === "E11000 duplicate key error"){
-                return {status: true, message: "User with this login already exists"}
+                return {status: false, message: "User with this login already exists"}
             }
             console.error(err.message);
             return { status: false, message: "Internal server error" };
@@ -93,15 +94,19 @@ class repoUser {
         try{
             const user = await userModel.findOne({
                 login: data.login,
-                password: data.password,
               });
             if(!user){
                 return {
                     status: false,
                     message: "Username does not exist or password is not correct",}
-            }else{
-                return { status: true, message: "Authentificated", userId: user._id};
             }
+            const isPasswordValid = await argon2.verify(user.password, data.password);
+            if (!isPasswordValid){
+                return {
+                    status: false,
+                    message: "Username does not exist or password is not correct"}
+            } 
+            return { status: true, message: "Authentificated", userId: user._id, role: user.role};
             }catch(err){
                 console.error(err.message)
                 return  { status: false, message: "Internal server error" };

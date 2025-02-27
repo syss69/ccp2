@@ -3,7 +3,6 @@ import userServices from "../Services/UserServices.js";
 class userController{
     async createUser(req, res){
         try{
-            console.log("in controllers")
             const newUser = await userServices.createUserService(req.body);
             if(newUser.status == false){
                 return res.status(409).json(newUser)
@@ -80,7 +79,7 @@ class userController{
             if(user.status == false){
                 return res.status(404).json(user)
             }
-            return res.status(200).json(user)
+            return res.status(200).cookie("token", user.token).json(user.status)
         }catch(err){
             res.status(500).json({status: false, message: err.message});
         }

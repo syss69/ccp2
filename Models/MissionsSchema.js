@@ -7,14 +7,17 @@ const MissionSchema = new Schema({
         ref: "User",
         required: true,
       },
-    title: String,
+    title: {
+      type: String,
+      required: true
+    },
     description: String,
     members: Array,
     isActual: {
         type: Boolean, 
-        default: True},
+        default: true},
 })
 
-const missionModel = mongoose.model("Mission", MissionsSchema);
+const missionModel = mongoose.model("Mission", MissionSchema);
 
 export default missionModel;
