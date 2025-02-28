@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     missions: Array,
     login: {
         type: String,
+        required: true,
         unique: true
         },
     password: String

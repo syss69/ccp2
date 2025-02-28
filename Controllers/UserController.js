@@ -65,9 +65,9 @@ class userController{
         try{
             const user = await userServices.updateUserService(req.params.id, req.body);
             if(user.status == false){
-                return res.status(404).json(user)
+                return res.status(404).json(user.info)
             }
-            return res.status(200).json(user)
+            return res.status(200).cookie("token", user.token).json(user.info)
         }catch(err){
             res.status(500).json({status: false, message: err.message});
         }

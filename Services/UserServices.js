@@ -51,7 +51,11 @@ class userServices {
 
     async updateUserService(id, data){
         try{
-            return await repoUser.updateUser(id, data)
+            const update = await repoUser.updateUser(id, data);
+            const updatedUser = update.user;
+            console.log(data.userId)
+            const token = jwt.sign({userId: updatedUser._id, role: updatedUser.role}, process.env.key, {expiresIn: "1h"});
+            return {info: update, token: token};
         }catch(err){
             console.error("Error in services:");
             return {status: false, message: err.message}

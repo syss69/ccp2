@@ -59,7 +59,7 @@ class repoUser {
                 return {status: false, message: "User with this login already exists"}
             }
             console.error(err.message);
-            return { status: false, message: "Internal server error" };
+            return { status: false, message: err.message };
         }
     }
 

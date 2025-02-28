@@ -1,5 +1,5 @@
 
-const checkIsUserToken = async (userId, req, res, next) => {
+const checkIsUserToken = async (req, res, next) => {
     try{
         const requestedUser = req.params.id;
         if (req.userId !== requestedUser){

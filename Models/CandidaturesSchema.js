@@ -11,3 +11,7 @@ const CandidatureSchema = new Schema({
         ref: "Mission",
         required: true},
 })
+
+const candidatureModel = mongoose.model("Candidature", CandidatureSchema);
+
+export default candidatureModel;

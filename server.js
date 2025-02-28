@@ -4,6 +4,7 @@ import "dotenv/config";
 import cookieParser from "cookie-parser";
 import userRoutes from "./Routes/UserRoutes.js"
 import missionRoutes from "./Routes/MissionRoutes.js"
+import candidatureRoutes from "./Routes/CandidatureRoutes.js"
 import mongoConnect from "./Config/db.js";
 
 const app = express();
@@ -17,7 +18,9 @@ app.use(express.json())
 
 app.use("/users", userRoutes);
 
-app.use("/mission", missionRoutes)
+app.use("/mission", missionRoutes);
+
+app.use("/candidature", candidatureRoutes);
 
 app.listen(port, () => {
     console.info("Serveur est demaree sur http://localhost:3000");

@@ -9,11 +9,13 @@ const checkToken = async (req, res, next) => {
     try{
         const decoded = jwt.verify(userCookie, process.env.key);
         const userId = decoded.userId;
+        const role = decoded.role;
         const user = await userModel.findById(userId);
         if(!user){
             return res.status(401).send("Your token is invalid, please try to reconnect to the srvice")
         }
         req.userId = userId;
+        req.role = role;
         next()
     }catch(err){
         console.error(err.message)
