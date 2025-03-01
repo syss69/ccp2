@@ -5,7 +5,6 @@ import userRoutes from "./Routes/UserRoutes.js"
 import missionRoutes from "./Routes/MissionRoutes.js"
 import candidatureRoutes from "./Routes/CandidatureRoutes.js"
 import mongoConnect from "./Config/db.js";
-import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express"
 import swaggerDefinition from "./Swagger/Swagger.js"
 
@@ -25,6 +24,10 @@ app.use("/mission", missionRoutes);
 app.use("/candidature", candidatureRoutes);
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDefinition));
+
+app.get("/", (req, res) => {
+  res.status(200).send("Use /api-docs for documentation")
+})
 
 app.listen(port, () => {
     console.info("Serveur est demaree sur http://localhost:3000");
