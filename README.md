@@ -8,6 +8,7 @@
   <li>Mongoose</li>
   <li>Argon2</li>
   <li>Cookie-Parser</li>
+  <li>JsonWebToken</li>
 </ul>
 
 <h3>Pour lancer l'application:</h3>
