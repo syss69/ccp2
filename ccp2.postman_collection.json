@@ -1,0 +1,418 @@
+{
+	"info": {
+		"_postman_id": "e4642ce7-e49d-4987-949c-7d67598c8e1a",
+		"name": "ccp2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40972437"
+	},
+	"item": [
+		{
+			"name": "missions",
+			"item": [
+				{
+					"name": "Ceate MISSION",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Save homeless dogs\",\r\n    \"description\": \"Save dogs in France \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/mission/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"mission",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update MISSION",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isActual\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/mission/update/67c1b81453cccc188f3ed256",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"mission",
+								"update",
+								"67c1b81453cccc188f3ed256"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get AACTUAL MISSIONS",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/mission/actual",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"mission",
+								"actual"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete MISSION",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/mission/delete/67c1ba08d8bba90e98c0afad",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"mission",
+								"delete",
+								"67c1ba08d8bba90e98c0afad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create USER",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Artem SYSOEV\",\r\n    \"role\": \"Association\",\r\n    \"login\": \"sysoev\",\r\n    \"password\": \"sysoev\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get USERS by ROLE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"Bénévole\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/role",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get USER by ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/id/67c1b02de1338542c96b9525",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"id",
+								"67c1b02de1338542c96b9525"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get USER by NAME",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Artem LEVIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/name",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete USER",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/delete/67c1b525e2ab34ad935c6aa3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"delete",
+								"67c1b525e2ab34ad935c6aa3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update USER",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"Association\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/update/67c1b48b064a2a8d70ea38a0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"update",
+								"67c1b48b064a2a8d70ea38a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"sysoev\",\r\n    \"password\": \"sysoev\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidatures",
+			"item": [
+				{
+					"name": "Create Candidature",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/candidature/apply/67c1ba08d8bba90e98c0afad",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"candidature",
+								"apply",
+								"67c1ba08d8bba90e98c0afad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve CANDIDATURE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/candidature/approve/67c2f4bcc5705cf9ca45aa35",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"candidature",
+								"approve",
+								"67c2f4bcc5705cf9ca45aa35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Decline CANDIDATURE",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/candidature/decline/67c2f54131c7708a3c8315bc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"candidature",
+								"decline",
+								"67c2f54131c7708a3c8315bc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get CANDIDATURES by MISSION",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/candidature/mission/67c1ba08d8bba90e98c0afad",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"candidature",
+								"mission",
+								"67c1ba08d8bba90e98c0afad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
