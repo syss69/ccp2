@@ -7,9 +7,9 @@ const router = express.Router();
 
 router.post("/apply/:id", checkToken, candidatureController.createCandidature);
 
-router.post("/approve/:id", checkToken, checkAdmin, candidatureController.approveCandidature);
+router.patch("/approve/:id", checkToken, checkAdmin, candidatureController.approveCandidature);
 
-router.delete("/decline/:id", checkToken, checkAdmin, candidatureController.declineCandidature);
+router.patch("/decline/:id", checkToken, checkAdmin, candidatureController.declineCandidature);
 
 router.get("/mission/:id", checkToken, checkAdmin, candidatureController.getAllByMission);
 

@@ -10,6 +10,10 @@ const CandidatureSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Mission",
         required: true},
+    status:{
+        type: String,
+        default: "En attente"
+    }
 })
 
 const candidatureModel = mongoose.model("Candidature", CandidatureSchema);

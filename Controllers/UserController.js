@@ -77,7 +77,7 @@ class userController{
         try{
             const user = await userServices.loginUserService(req.body);
             if(user.status == false){
-                return res.status(404).json(user)
+                return res.status(401).json(user)
             }
             return res.status(200).cookie("token", user.token).json(user.status)
         }catch(err){

@@ -19,7 +19,7 @@ class repoCandidature{
 
     async approveCandidature(data){
         try{
-            const candidature = await candidatureModel.findByIdAndDelete(data);
+            const candidature = await candidatureModel.findByIdAndUpdate(data, {status: "Acceptée"});
             if (!candidature){
                 return {status: false, message: "Candidature not found"}
             }
@@ -37,7 +37,7 @@ class repoCandidature{
 
     async declineCandidature(data){
         try{
-            const candidature = await candidatureModel.findByIdAndDelete(data);
+            const candidature = await candidatureModel.findByIdAndUpdate(data, {status: "Refusée"});
             if (!candidature){
                 return {status: false, message: "Candidature not found"}
             }
