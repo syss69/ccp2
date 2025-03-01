@@ -11,9 +11,10 @@
 </ul>
 
 <h3>Pour lancer l'application:</h3>
+-------------------------------------
 
 npm install //installer les dependances
--------------------------------------
+
 npm run start // demarer le serveur
 
 
