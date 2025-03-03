@@ -4,8 +4,9 @@ import argon2 from "argon2"
 class repoUser {
     async getUsersByRole(data){
         try{
+            console.log(data)
             const users = await userModel.find({
-                 role: data.role
+                 role: data
             })
             return users;
     }catch(err){
@@ -16,8 +17,9 @@ class repoUser {
 
     async getUserByName(data){
         try{
+            console.log(data)
             const user = await userModel.findOne({
-                name: data.name
+                name: data
             })
             if(user){
                 return user;

@@ -150,32 +150,21 @@
 				},
 				{
 					"name": "Get USERS by ROLE",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"role\": \"Bénévole\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseUrl}}/users/role",
+							"raw": "{{baseUrl}}/users/role/Bénévole",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"users",
-								"role"
+								"role",
+								"Bénévole"
 							]
 						}
 					},
@@ -205,32 +194,21 @@
 				},
 				{
 					"name": "Get USER by NAME",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Artem LEVIN\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseUrl}}/users/name",
+							"raw": "{{baseUrl}}/users/name/Balthazar CLEMENT",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"users",
-								"name"
+								"name",
+								"Balthazar CLEMENT"
 							]
 						}
 					},
@@ -333,14 +311,14 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/candidature/apply/67c1ba08d8bba90e98c0afad",
+							"raw": "{{baseUrl}}/candidature/apply/67c362ca21fcfcf438326b93",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"candidature",
 								"apply",
-								"67c1ba08d8bba90e98c0afad"
+								"67c362ca21fcfcf438326b93"
 							]
 						}
 					},
@@ -399,14 +377,35 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/candidature/mission/67c1ba08d8bba90e98c0afad",
+							"raw": "{{baseUrl}}/candidature/mission/67c362ca21fcfcf438326b93",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"candidature",
 								"mission",
-								"67c1ba08d8bba90e98c0afad"
+								"67c362ca21fcfcf438326b93"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get MY CANDIDATURES",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/candidature/my",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"candidature",
+								"my"
 							]
 						}
 					},

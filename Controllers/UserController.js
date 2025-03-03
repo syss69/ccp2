@@ -15,7 +15,7 @@ class userController{
 
     async getUserByName(req, res){
         try{
-            const user = await userServices.getUserByNameService(req.body);
+            const user = await userServices.getUserByNameService(req.params.name);
             if(user.status == false){
                 return res.status(404).json(user)
             }
@@ -39,7 +39,7 @@ class userController{
 
     async getUsersByRole(req, res){
         try{
-            const users = await userServices.getUsersByRoleService(req.body);
+            const users = await userServices.getUsersByRoleService(req.params.role);
             if(users.status == false){
                 return res.status(404).json(users)
             }

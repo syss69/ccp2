@@ -4,6 +4,34 @@ export default {
         post:{
             tags: ['Users'], 
             summary: 'Creer utilisateur',
+            requestBody: {
+            "required": true,
+            "content": {
+                "application/json": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "JohnDoe"
+                    },
+                    "role":{
+                        "type": "string",
+                        "example": "Bénévole"
+                    },
+                    "login": {
+                        "type": "string",
+                        "example": "john"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "123456"
+                    }
+                    }
+                }
+                }
+            }
+            },
             responses:{
                 201:{
                     description: 'Success'
@@ -14,7 +42,7 @@ export default {
                 }
             }
         },
-        '/users/name':{
+        '/users/name/:name':{
         get:{
             tags: ['Users'],
             summary: 'Recuperer utilisateur par nom',

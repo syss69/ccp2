@@ -7,11 +7,11 @@ const router = express.Router();
 
 router.post("/create", userController.createUser);
 
-router.get("/name", checkToken, userController.getUserByName);
+router.get("/name/:name", checkToken, userController.getUserByName);
 
 router.get("/id/:id", checkToken, userController.getUserById);
 
-router.get("/role", checkToken, userController.getUsersByRole);
+router.get("/role/:role", checkToken, userController.getUsersByRole);
 
 router.delete("/delete/:id", checkToken, checkIsUserToken, userController.deleteUser);
 
