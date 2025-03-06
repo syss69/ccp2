@@ -1,7 +1,7 @@
 import express from "express";
 import userController from "../Controllers/UserController.js";
-import {checkToken} from "../Middlewares/authMiddleware.js";
-import {checkIsUserToken} from "../Middlewares/isUserMiddleware.js"
+import { checkToken } from "../Middlewares/authMiddleware.js";
+import { checkIsUserToken } from "../Middlewares/isUserMiddleware.js";
 
 const router = express.Router();
 
@@ -13,9 +13,19 @@ router.get("/id/:id", checkToken, userController.getUserById);
 
 router.get("/role/:role", checkToken, userController.getUsersByRole);
 
-router.delete("/delete/:id", checkToken, checkIsUserToken, userController.deleteUser);
+router.delete(
+  "/delete/:id",
+  checkToken,
+  checkIsUserToken,
+  userController.deleteUser
+);
 
-router.patch("/update/:id", checkToken, checkIsUserToken, userController.updateUser);
+router.patch(
+  "/update/:id",
+  checkToken,
+  checkIsUserToken,
+  userController.updateUser
+);
 
 router.post("/login", userController.loginUser);
 
