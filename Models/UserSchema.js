@@ -7,7 +7,12 @@ const UserSchema = new Schema({
     required: true,
   },
   role: String,
-  missions: Array,
+  missions: [
+    {
+      type: Schema.ObjectId,
+      ref: "Mission",
+    },
+  ],
   login: {
     type: String,
     required: true,

@@ -99,6 +99,17 @@ class userController {
       res.status(500).json({ status: false, message: err.message });
     }
   }
+
+  async getMe(req, res) {
+    try {
+      const me = await userServices.getUserByIdService(req.userId);
+      if (me) console.log(me);
+      else console.log("not me");
+      return res.status(200).json(me);
+    } catch (err) {
+      res.status(500).json({ status: false, message: err.message });
+    }
+  }
 }
 
 export default new userController();

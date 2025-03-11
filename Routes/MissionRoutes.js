@@ -11,7 +11,6 @@ router.post("/create", checkToken, checkAdmin, missionController.createMission);
 router.patch(
   "/update/:id",
   checkToken,
-  checkAdmin,
   checkIsAuthor,
   missionController.modifyMission
 );
@@ -19,7 +18,6 @@ router.patch(
 router.delete(
   "/delete/:id",
   checkToken,
-  checkAdmin,
   checkIsAuthor,
   missionController.deleteMission
 );

@@ -35,6 +35,7 @@ class repoUser {
   async getUserById(data) {
     try {
       const user = await userModel.findById(data);
+      await user.populate("missions");
       if (user) {
         return user;
       } else {
@@ -100,7 +101,6 @@ class repoUser {
       const user = await userModel.findOne({
         login: data.login,
       });
-      console.log(user);
       if (!user) {
         return {
           status: false,
