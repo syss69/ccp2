@@ -117,8 +117,7 @@ class repoUser {
       return {
         status: true,
         message: "Authentificated",
-        userId: user._id,
-        role: user.role,
+        user: user,
       };
     } catch (err) {
       console.error(err.message);

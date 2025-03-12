@@ -9,6 +9,7 @@ import swaggerUI from "swagger-ui-express";
 import swaggerDefinition from "./Swagger/Swagger.js";
 import cors from "cors";
 import { checkToken } from "./Middlewares/authMiddleware.js";
+import { config } from "dotenv";
 
 const app = express();
 const port = 3000;
@@ -17,7 +18,7 @@ mongoConnect();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.URL_FRONT,
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
     credentials: true,

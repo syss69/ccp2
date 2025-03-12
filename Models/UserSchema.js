@@ -25,7 +25,6 @@ UserSchema.set("toJSON", {
   //cette function permette de ne pas retourner le mot de pass si on appelle "get" -- aussi possible d'utiliser select("-password")
   transform: function (doc, ret) {
     delete ret.password;
-    delete ret.role;
     return ret;
   },
 });
