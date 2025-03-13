@@ -16,6 +16,8 @@ const port = 3000;
 
 mongoConnect();
 
+console.log(process.env.URL_DATABASE);
+
 app.use(
   cors({
     origin: process.env.URL_FRONT,
