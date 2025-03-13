@@ -93,6 +93,8 @@ class userController {
         .cookie("token", response.token, {
           maxAge: 60 * 60 * 1000,
           httpOnly: true,
+          secure: true,
+          sameSite: "None",
         })
         .json({ status: response.status, user: response.userData });
     } catch (err) {
