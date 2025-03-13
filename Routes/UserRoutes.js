@@ -13,6 +13,8 @@ router.get("/id/:id", checkToken, userController.getUserById);
 
 router.get("/role/:role", checkToken, userController.getUsersByRole);
 
+router.get("/me", checkToken, userController.getMe);
+
 router.delete(
   "/delete/:id",
   checkToken,

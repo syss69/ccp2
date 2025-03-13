@@ -7,7 +7,12 @@ const UserSchema = new Schema({
     required: true,
   },
   role: String,
-  missions: Array,
+  missions: [
+    {
+      type: Schema.ObjectId,
+      ref: "Mission",
+    },
+  ],
   login: {
     type: String,
     required: true,
@@ -20,7 +25,6 @@ UserSchema.set("toJSON", {
   //cette function permette de ne pas retourner le mot de pass si on appelle "get" -- aussi possible d'utiliser select("-password")
   transform: function (doc, ret) {
     delete ret.password;
-    delete ret.role;
     return ret;
   },
 });

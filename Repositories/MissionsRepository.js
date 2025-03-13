@@ -47,9 +47,11 @@ class repoMission {
 
   async getActualMissions() {
     try {
-      const missions = await missionModel.find({
-        isActual: true,
-      });
+      const missions = await missionModel
+        .find({
+          isActual: true,
+        })
+        .populate("author");
       return { status: true, missions: missions };
     } catch (err) {
       console.error(err.message);

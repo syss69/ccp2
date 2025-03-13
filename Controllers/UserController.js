@@ -84,17 +84,26 @@ class userController {
 
   async loginUser(req, res) {
     try {
-      const user = await userServices.loginUserService(req.body);
-      if (user.status == false) {
-        return res.status(401).json(user);
+      const response = await userServices.loginUserService(req.body);
+      if (response.status == false) {
+        return res.status(401).json(response);
       }
       return res
         .status(200)
-        .cookie("token", user.token, {
+        .cookie("token", response.token, {
           maxAge: 60 * 60 * 1000,
           httpOnly: true,
         })
-        .json(user.status);
+        .json({ status: response.status, user: response.userData });
+    } catch (err) {
+      res.status(500).json({ status: false, message: err.message });
+    }
+  }
+
+  async getMe(req, res) {
+    try {
+      const me = await userServices.getUserByIdService(req.userId);
+      return res.status(200).json(me);
     } catch (err) {
       res.status(500).json({ status: false, message: err.message });
     }
